@@ -34,8 +34,17 @@ pg.init()
 window = pg.display.set_mode((600, 500))
 pg.display.set_caption('Ping-Pong')
 game = True
+racket_left = Player('racket.png', 50, 150, 30, 20, 5)
+racket_right = Player('racket.png', 50, 150, 520, 200, 5)
+ball = GameSprite('tenis_ball.png', 50, 50, 200, 200, 7)
 
 while game:
     for i in pg.event.get():
         if i.type == pg.QUIT:
             game = False
+    racket_left.reset()
+    racket_right.reset()
+    ball.reset()
+    racket_left.update_left()
+    racket_right.update_right()
+    pg.display.update()
